@@ -22,8 +22,8 @@
  * THE SOFTWARE.
  */
 
-#ifndef _FEATHER_NRF52840_H
-#define _FEATHER_NRF52840_H
+#ifndef _MSE_REWARDS_BOARD_A
+#define _MSE_REWARDS_BOARD_A
 
 #define _PINNUM(port, pin)    ((port)*32 + (pin))
 
@@ -31,39 +31,39 @@
 /* LED
  *------------------------------------------------------------------*/
 #define LEDS_NUMBER           2
-#define LED_PRIMARY_PIN       _PINNUM(1, 15)
-#define LED_SECONDARY_PIN     _PINNUM(1, 10)
+#define LED_PRIMARY_PIN       _PINNUM(1, 2)
+#define LED_SECONDARY_PIN     _PINNUM(1, 13)
 #define LED_STATE_ON          1
-
-#define LED_NEOPIXEL           _PINNUM(0, 16)
-#define NEOPIXELS_NUMBER      1
-#define BOARD_RGB_BRIGHTNESS  0x040404
 
 /*------------------------------------------------------------------*/
 /* BUTTON
  *------------------------------------------------------------------*/
+// we have to have two buttons for the BSP, but we actually have none
+// set these two to unused pins
 #define BUTTONS_NUMBER        2
-#define BUTTON_1              _PINNUM(1, 02)
-#define BUTTON_2              _PINNUM(0, 10)
+#define BUTTON_1              _PINNUM(0, 22)
+#define BUTTON_2              _PINNUM(0, 23)
 #define BUTTON_PULL           NRF_GPIO_PIN_PULLUP
 
 //--------------------------------------------------------------------+
 // BLE OTA
 //--------------------------------------------------------------------+
-#define BLEDIS_MANUFACTURER   "Adafruit Industries"
-#define BLEDIS_MODEL          "Feather nRF52840 Express"
+#define BLEDIS_MANUFACTURER   "MSE"
+#define BLEDIS_MODEL          "Rewards Board A"
 
 //--------------------------------------------------------------------+
 // USB
 //--------------------------------------------------------------------+
+// TODO: this really needs to change, we can't squat on Adafruit's
+// VID / PID
 #define USB_DESC_VID           0x239A
 #define USB_DESC_UF2_PID       0x0029
 #define USB_DESC_CDC_ONLY_PID  0x002A
 
 //------------- UF2 -------------//
-#define UF2_PRODUCT_NAME      "Adafruit Feather nRF52840 Express"
-#define UF2_VOLUME_LABEL      "FTHR840BOOT"
-#define UF2_BOARD_ID          "nRF52840-Feather-revD"
-#define UF2_INDEX_URL         "https://www.adafruit.com/product/4062"
+#define UF2_PRODUCT_NAME      "MSE Rewards Board A"
+#define UF2_VOLUME_LABEL      "MSERWDBRD_A"
+#define UF2_BOARD_ID          "MSE_Rewards_Board_A_AW1
+#define UF2_INDEX_URL         ""
 
-#endif // _FEATHER_NRF52840_H
+#endif // _MSE_REWARDS_BOARD_A
