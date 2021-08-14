@@ -54,15 +54,21 @@
 //--------------------------------------------------------------------+
 // USB
 //--------------------------------------------------------------------+
-// TODO: this really needs to change, we can't squat on Adafruit's
-// VID / PID
-#define USB_DESC_VID           0x239A
-#define USB_DESC_UF2_PID       0x0029
-#define USB_DESC_CDC_ONLY_PID  0x002A
+// NOTE: This is using Nordic Semiconductor's VID which is apparently
+// OK, but PID clash is our problem
+
+// see https://devzone.nordicsemi.com/f/nordic-q-a/33851/nrf52840---usb-vendor-id-and-usb-product-id
+// and https://devzone.nordicsemi.com/f/nordic-q-a/30440/nrf24lu1-pid-vid
+
+// PIDs randomly generated (build PID = 0xC7C2)
+
+#define USB_DESC_VID           0x1915
+#define USB_DESC_UF2_PID       0xC7C0
+#define USB_DESC_CDC_ONLY_PID  0xC7C1
 
 //------------- UF2 -------------//
 #define UF2_PRODUCT_NAME      "MSE Rewards Board A"
-#define UF2_VOLUME_LABEL      "MSERWDBRD_A"
+#define UF2_VOLUME_LABEL      "MSE_RBA"
 #define UF2_BOARD_ID          "MSE_Rewards_Board_A_AW1"
 #define UF2_INDEX_URL         ""
 
