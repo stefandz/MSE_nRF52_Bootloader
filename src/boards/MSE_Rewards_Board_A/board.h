@@ -69,7 +69,7 @@
 //------------- UF2 -------------//
 #define UF2_PRODUCT_NAME      "MSE Rewards Board A"
 #define UF2_VOLUME_LABEL      "MSE_RBA"
-#define UF2_BOARD_ID          "MSE_Rewards_Board_A_AW1"
+#define UF2_BOARD_ID          "MSE_Rewards_Board_A_AW4"
 #define UF2_INDEX_URL         ""
 
 #endif // _MSE_REWARDS_BOARD_A

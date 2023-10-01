@@ -1,10 +1,11 @@
-# Adafruit nRF52 Bootloader
+# TFH MSE nRF52 Bootloader
 
 [![Build Status](https://github.com/adafruit/Adafruit_nRF52_Bootloader/workflows/Build/badge.svg)](https://github.com/adafruit/Adafruit_nRF52_Bootloader/actions)
 
 This is a CDC/DFU/UF2 bootloader for nRF52 boards.
 
 - MSE Rewards Board A
+- MSE Bluetooth Controller
 
 UF2 is an easy-to-use bootloader that appears as a flash drive. You can just copy `.uf2`-format
 application images to the flash drive to load new firmware. See https://github.com/Microsoft/uf2 and https://github.com/adafruit/uf2-samdx1 for more information.
@@ -40,7 +41,7 @@ There are two pins, `DFU` and `FRST` that bootloader will check upon reset/power
 - <s>`DFU = HIGH` and `FRST = LOW`: Factory Reset mode: erase firmware application and its data</s>
 - `DFU = HIGH` and `FRST = HIGH`: Go to application code if it is present, otherwise enter DFU with UF2
 - The `GPREGRET` register can also be set to force the bootloader can enter any of above modes (plus a CDC-only mode for Arduino).
-`GPREGRET` is set by the application before performing a soft reset.
+  `GPREGRET` is set by the application before performing a soft reset.
 
 ```c
 #include "nrf_nvic.h"
@@ -65,11 +66,13 @@ For other boards, please check the board definition for details.
 To create your own UF2 DFU update image, simply use the [Python conversion script](https://github.com/Microsoft/uf2/blob/master/utils/uf2conv.py) on a .bin file or .hex file, specifying the family as **0xADA52840**. If using a .bin file with the conversion script you must specify application address with the -b switch, this address depend on the SoftDevice size/version e.g S140 v6 is 0x26000
 
 To create a UF2 image from a .bin file:
+
 ```
 uf2conv.py firmware.bin -c -b 0x26000 -f 0xADA52840
 ```
 
 To create a UF2 image from a .hex file:
+
 ```
 uf2conv.py firmware.hex -c -f 0xADA52840
 ```
@@ -158,6 +161,7 @@ make: *** [_build/main.o] Error 127
 
 ... you may need to pass the location of the GCC ARM toolchain binaries to `make` using
 the variable `CROSS_COMPILE` as below:
+
 ```
 $ make CROSS_COMPILE=/opt/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi- BOARD=feather_nrf52832 all
 ```
@@ -171,7 +175,6 @@ Install python-intelhex with
 ```
 pip install intelhex
 ```
-
 
 #### 3. `make: nrfjprog: No such file or directory`
 

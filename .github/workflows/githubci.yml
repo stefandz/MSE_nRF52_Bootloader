@@ -15,8 +15,9 @@ jobs:
       fail-fast: false
       matrix:
         board:
-          # Adafruit Boards
+          # MSE Boards
           - 'MSE_Rewards_Board_A'
+          - 'MSE_Bluetooth_Controller'
 
     steps:
     - name: Setup Python
